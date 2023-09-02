@@ -1,5 +1,8 @@
 <script lang="ts">
-	import Todo from './Todo.svelte';
+	import { goto } from '$app/navigation';
+	import Header from '$lib/Header.svelte';
+	import Todo from '$lib/Todo.svelte';
+	import TodoForm from '$lib/TodoForm.svelte';
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
@@ -9,27 +12,48 @@
 	<title>Todos App</title>
 </svelte:head>
 
-<header>
-	<h1>Mbappé's favorite todos app</h1>
-	<p>(or maybe not)</p>
-</header>
+<Header bangers>
+	Mbappé's favorite todos app
+	<p slot="subtitle">(or maybe not)</p>
+</Header>
 
-{#each data.todos as todo (todo.id)}
-	<Todo {...todo}/>
-{/each}
+<section>
+	<h2>
+		Anything new to do?
+	</h2>
+	<TodoForm
+		ctaText='Add todo'
+	/>
+</section>
+
+<section>
+	<h2>
+		Things you haven't done for some reason
+	</h2>
+
+	{#each data.todos as todo (todo.id)}
+		<Todo
+			{...todo}
+			onEdit={() => goto(window.location.href + `todo/${todo.id}/edit`)}
+			onDone={() => console.log('done')}
+			onDelete={() => console.log('delete')}
+		/>
+	{/each}
+</section>
 
 <style>
-	header {
+	section {
+		margin-bottom: 2rem;
+	}
+
+	section :global(article) {
+		border-bottom: 2px dashed var(--primary-color);
+	}
+
+	h2 {
+		color: var(--primary-color);
+		outline: 2px solid #b13b18;
 		padding: 1rem;
-		margin-bottom: 1rem;
-	}
-
-	header h1 {
-		font-family: 'Bangers', cursive;
-		text-align: center;
-	}
-
-	header p {
-		text-align: center;
+		margin-bottom: 2rem;
 	}
 </style>
