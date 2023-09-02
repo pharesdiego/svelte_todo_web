@@ -18,18 +18,12 @@
 </Header>
 
 <section>
-	<h2>
-		Anything new to do?
-	</h2>
-	<TodoForm
-		ctaText='Add todo'
-	/>
+	<h2>Anything new to do?</h2>
+	<TodoForm ctaText="Add todo" />
 </section>
 
 <section>
-	<h2>
-		Things you haven't done for some reason
-	</h2>
+	<h2>Things you haven't done for some reason</h2>
 
 	{#each data.todos as todo (todo.id)}
 		<Todo
