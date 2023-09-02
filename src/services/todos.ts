@@ -22,3 +22,14 @@ export const fetchTodoById = async (todoId: string): Promise<Todo> => {
 
   return todo.data;
 }
+
+export const createTodo = async (data: FormData) => {
+  const response = await fetch(`${BASE_URL}/todos`, {
+    method: 'post',
+    body: data,
+  })
+
+  if (!response.ok) {
+    throw "Couldn't create Todo"
+  }
+}
