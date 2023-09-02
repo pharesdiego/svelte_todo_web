@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import Button from '$lib/Button.svelte';
 	import Input from '$lib/Input.svelte';
 	import Textarea from '$lib/Textarea.svelte';
@@ -7,7 +8,7 @@
 	export let todo: { title: string; content: string } = { title: '', content: '' };
 </script>
 
-<form on:submit|preventDefault={(e) => console.log(e)}>
+<form method="POST" use:enhance>
 	<Input name="title" value={todo.title} label="Title" helperText="A nice title" />
 	<Textarea
 		name="content"
@@ -15,7 +16,7 @@
 		label="Content"
 		helperText="Literally the content you wish your Todo to have"
 	/>
-	<Button type='submit'>
+	<Button type="submit">
 		{ctaText}
 	</Button>
 </form>
