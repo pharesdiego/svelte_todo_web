@@ -25,11 +25,32 @@ export const fetchTodoById = async (todoId: string): Promise<Todo> => {
 
 export const createTodo = async (data: FormData) => {
   const response = await fetch(`${BASE_URL}/todos`, {
-    method: 'post',
+    method: 'POST',
     body: data,
   })
 
   if (!response.ok) {
     throw "Couldn't create Todo"
+  }
+}
+
+export const deleteTodoById = async (todoId: string) => {
+  const response = await fetch(`${BASE_URL}/todos/${todoId}`, {
+    method: 'DELETE'
+  })
+
+  if (!response.ok) {
+    throw "Couldn't delete Todo"
+  }
+}
+
+export const updateTodoById = async (todoId: string, data: FormData) => {
+  const response = await fetch(`${BASE_URL}/todos/${todoId}`, {
+    method: 'PUT',
+    body: data
+  })
+
+  if (!response.ok) {
+    throw "Couldn't update Todo"
   }
 }
