@@ -5,15 +5,17 @@
 	export let helperText: string = '';
   export let placeholder: string | undefined = undefined;
 	export let value: string = '';
+	export let required = false;
 </script>
 
 <div class:error>
 	<label for="{name}-label">{label}</label>
 	<textarea
+		required={required}
 		name={name}
 		value={value}
 		id="{name}-label"
-    rows={2}
+    rows={4}
 		placeholder={placeholder}
 		aria-describedby="{name}-helper-text"
 		on:input

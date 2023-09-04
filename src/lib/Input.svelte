@@ -5,11 +5,13 @@
 	export let helperText: string = '';
   export let placeholder: string | undefined = undefined;
   export let value: string = '';
+	export let required = false;
 </script>
 
 <div class:error>
 	<label for="{name}-label">{label}</label>
 	<input
+		required={required}
 		name={name}
     value={value}
 		id="{name}-label"
