@@ -6,11 +6,23 @@
 
 	export let ctaText: string;
 	export let todo: { title: string; content: string } = { title: '', content: '' };
+	export let shouldReset = true;
+	export let onFormStatusChange: (status: 'submitting' | 'submitted') => void = () => null;
 </script>
 
-<form method="POST" use:enhance>
-	<Input name="title" value={todo.title} label="Title" helperText="A nice title" />
+<form
+	method="POST"
+	use:enhance={() => {
+		onFormStatusChange('submitting')
+		return async ({ update }) => {
+			await update({ reset: shouldReset })
+			onFormStatusChange('submitted')
+		};
+	}}
+>
+	<Input required name="title" value={todo.title} label="Title" helperText="A nice title" />
 	<Textarea
+		required
 		name="content"
 		value={todo.content}
 		label="Content"
