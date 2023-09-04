@@ -3,9 +3,12 @@
 	import Header from '$lib/Header.svelte';
 	import Todo from '$lib/Todo.svelte';
 	import TodoForm from '$lib/TodoForm.svelte';
+	import { deleteTodoById, fetchTodos } from '../services/todos';
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
+
+	$: todos = data.todos;
 </script>
 
 <svelte:head>
@@ -24,13 +27,14 @@
 
 <section>
 	<h2>Things you haven't done for some reason</h2>
-
-	{#each data.todos as todo (todo.id)}
+	{#each todos as todo (todo.id)}
 		<Todo
 			{...todo}
 			onEdit={() => goto(window.location.href + `todo/${todo.id}/edit`)}
-			onDone={() => console.log('done')}
-			onDelete={() => console.log('delete')}
+			onDone={() =>
+				deleteTodoById(todo.id).then(() => {
+					todos = todos.filter((t) => t.id !== todo.id);
+				})}
 		/>
 	{/each}
 </section>
