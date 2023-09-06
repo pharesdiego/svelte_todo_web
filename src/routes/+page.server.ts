@@ -1,14 +1,18 @@
 import type { PageServerLoad } from './$types';
 import { createTodo, fetchTodos } from '../services/todos';
-import { fail, type Actions } from '@sveltejs/kit';
+import { fail, type Actions, error } from '@sveltejs/kit';
 
 
 export const load: PageServerLoad = async ({ params }) => {
-  const todos = await fetchTodos();
+  try {
+    const todos = await fetchTodos();
 
-  return {
-    todos
-  };
+    return {
+      todos
+    };
+  } catch (e) {
+    throw error(404, 'API not available yet')
+  }
 };
 
 export const actions = {

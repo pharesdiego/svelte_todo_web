@@ -3,7 +3,6 @@
 	import Header from '$lib/Header.svelte';
 	import Todo from '$lib/Todo.svelte';
 	import TodoForm from '$lib/TodoForm.svelte';
-	import { deleteTodoById, fetchTodos } from '../services/todos';
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
@@ -31,10 +30,13 @@
 		<Todo
 			{...todo}
 			onEdit={() => goto(window.location.href + `todo/${todo.id}/edit`)}
-			onDone={() =>
-				deleteTodoById(todo.id).then(() => {
-					todos = todos.filter((t) => t.id !== todo.id);
-				})}
+			onDone={async () => {
+				await fetch(`http://localhost:4000/api/todos/${todo.id}`, {
+					method: 'DELETE'
+				})
+
+				todos = todos.filter((t) => t.id !== todo.id);
+			}}
 		/>
 	{/each}
 </section>

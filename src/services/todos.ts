@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:4000/api'
+const BASE_URL = `http://${process.env.API_HOST || 'localhost'}:4000/api`
 
 interface PhxResponse<T> {
   data: T
@@ -31,16 +31,6 @@ export const createTodo = async (data: FormData) => {
 
   if (!response.ok) {
     throw "Couldn't create Todo"
-  }
-}
-
-export const deleteTodoById = async (todoId: string) => {
-  const response = await fetch(`${BASE_URL}/todos/${todoId}`, {
-    method: 'DELETE'
-  })
-
-  if (!response.ok) {
-    throw "Couldn't delete Todo"
   }
 }
 
