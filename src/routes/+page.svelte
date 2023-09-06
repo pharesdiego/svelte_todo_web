@@ -28,7 +28,9 @@
 	<h2>Things you haven't done for some reason</h2>
 	{#each todos as todo (todo.id)}
 		<Todo
-			{...todo}
+			title={todo.title}
+			content={todo.content}
+			createdAt={todo.inserted_at}
 			onEdit={() => goto(window.location.href + `todo/${todo.id}/edit`)}
 			onDone={async () => {
 				await fetch(`http://localhost:4000/api/todos/${todo.id}`, {

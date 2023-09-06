@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { getTimeFromNow } from '../utils/date';
 	import Button from './Button.svelte';
 
 	export let title: string;
 	export let content: string;
+	export let createdAt: string;
 	export let onDone: () => Promise<void>;
 	export let onEdit: () => void;
 
@@ -15,6 +17,9 @@
 	</h3>
 	<p>
 		{content}
+	</p>
+	<p class='created_at'>
+		Created {getTimeFromNow(createdAt)}
 	</p>
 	<section>
 		<Button link on:click={onEdit}>Edit</Button>
@@ -42,5 +47,9 @@
 
 	section {
 		margin: 0.5rem 0;
+	}
+
+	p.created_at {
+		color: var(--light-grey)
 	}
 </style>
