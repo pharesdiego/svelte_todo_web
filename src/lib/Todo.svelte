@@ -11,7 +11,7 @@
 	let isDeleting = false;
 </script>
 
-<article>
+<article data-testid='todo'>
 	<h3>
 		{title}
 	</h3>
@@ -25,7 +25,7 @@
 		<Button link on:click={onEdit}>Edit</Button>
 		<Button
 			color="secondary"
-			on:click={async () => {
+			on:click={() => {
 				isDeleting = true;
 
 				onDone().finally(() => (isDeleting = false));

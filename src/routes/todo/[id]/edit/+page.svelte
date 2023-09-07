@@ -24,9 +24,9 @@
 </section>
 
 {#if isUpdating}
-	<p>Updating...</p>
+	<p data-testid='edit-loading-msg'>Updating...</p>
 {/if}
 
 {#if form?.success && isUpdating === false}
-	<p>Successfully updated!</p>
+	<p data-testid='edit-done-msg'>Successfully updated!</p>
 {/if}
