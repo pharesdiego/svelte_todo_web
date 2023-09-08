@@ -35,7 +35,7 @@
 			onDone={async () => {
 				await fetch(`http://localhost:4000/api/todos/${todo.id}`, {
 					method: 'DELETE'
-				})
+				});
 
 				todos = todos.filter((t) => t.id !== todo.id);
 			}}

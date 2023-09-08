@@ -13,7 +13,7 @@
 	header {
 		padding: 1rem;
 		margin-bottom: 1rem;
-    text-align: center;
+		text-align: center;
 	}
 
 	header h1 {

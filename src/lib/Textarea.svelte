@@ -3,7 +3,7 @@
 	export let error = false;
 	export let label: string = '';
 	export let helperText: string = '';
-  export let placeholder: string | undefined = undefined;
+	export let placeholder: string | undefined = undefined;
 	export let value: string = '';
 	export let required = false;
 </script>
@@ -11,12 +11,12 @@
 <div class:error>
 	<label for="{name}-label">{label}</label>
 	<textarea
-		required={required}
-		name={name}
-		value={value}
+		{required}
+		{name}
+		{value}
 		id="{name}-label"
-    rows={4}
-		placeholder={placeholder}
+		rows={4}
+		{placeholder}
 		aria-describedby="{name}-helper-text"
 		on:input
 	/>
@@ -35,20 +35,20 @@
 		gap: 0.5rem;
 	}
 
-  span {
-    color: var(--light-grey);
-  }
+	span {
+		color: var(--light-grey);
+	}
 
 	div textarea {
 		padding: 0.5rem;
 		border: 2px solid var(--light-grey);
 		outline: 0;
-    resize: vertical;
+		resize: vertical;
 	}
 
 	div textarea:focus {
 		border-color: var(--primary-color);
-    box-shadow: 2px 2px black;
+		box-shadow: 2px 2px black;
 	}
 
 	div.error textarea {

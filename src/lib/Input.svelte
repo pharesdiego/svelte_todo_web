@@ -3,19 +3,19 @@
 	export let error = false;
 	export let label: string = '';
 	export let helperText: string = '';
-  export let placeholder: string | undefined = undefined;
-  export let value: string = '';
+	export let placeholder: string | undefined = undefined;
+	export let value: string = '';
 	export let required = false;
 </script>
 
 <div class:error>
 	<label for="{name}-label">{label}</label>
 	<input
-		required={required}
-		name={name}
-    value={value}
+		{required}
+		{name}
+		{value}
 		id="{name}-label"
-		placeholder={placeholder}
+		{placeholder}
 		aria-describedby="{name}-helper-text"
 	/>
 	<span id="{name}-helper-text">
@@ -33,9 +33,9 @@
 		gap: 0.5rem;
 	}
 
-  span {
-    color: var(--light-grey);
-  }
+	span {
+		color: var(--light-grey);
+	}
 
 	div input {
 		padding: 0.5rem;
@@ -45,7 +45,7 @@
 
 	div input:focus {
 		border-color: var(--primary-color);
-    box-shadow: 2px 2px black;
+		box-shadow: 2px 2px black;
 	}
 
 	div.error input {

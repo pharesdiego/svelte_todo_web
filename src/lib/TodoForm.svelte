@@ -13,10 +13,10 @@
 <form
 	method="POST"
 	use:enhance={() => {
-		onFormStatusChange('submitting')
+		onFormStatusChange('submitting');
 		return async ({ update }) => {
-			await update({ reset: shouldReset })
-			onFormStatusChange('submitted')
+			await update({ reset: shouldReset });
+			onFormStatusChange('submitted');
 		};
 	}}
 >

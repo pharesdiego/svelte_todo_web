@@ -11,14 +11,14 @@
 	let isDeleting = false;
 </script>
 
-<article data-testid='todo'>
+<article data-testid="todo">
 	<h3>
 		{title}
 	</h3>
 	<p>
 		{content}
 	</p>
-	<p class='created_at'>
+	<p class="created_at">
 		Created {getTimeFromNow(createdAt)}
 	</p>
 	<section>
@@ -50,6 +50,6 @@
 	}
 
 	p.created_at {
-		color: var(--light-grey)
+		color: var(--light-grey);
 	}
 </style>
