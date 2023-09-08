@@ -1,7 +1,7 @@
 :root {
-	--primary-color: #b13b18;
-	--error-color: #eb3443;
-	--light-grey: #7e7e7e;
+  --primary-color: #b13b18;
+  --error-color: #eb3443;
+  --light-grey: #7e7e7e;
 }
 
 h1,
@@ -10,6 +10,6 @@ h3,
 p,
 span,
 a {
-	margin: 0;
-	line-height: 1.5;
+  margin: 0;
+  line-height: 1.5;
 }

@@ -3,29 +3,29 @@ import { fetchTodoById, updateTodoById } from '../../../../services/todos';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-	const todo_id = params.id;
-	const todo = await fetchTodoById(todo_id);
+  const todo_id = params.id;
+  const todo = await fetchTodoById(todo_id);
 
-	return {
-		todo
-	};
+  return {
+    todo
+  };
 };
 
 export const actions = {
-	default: async ({ request, params }) => {
-		const data = await request.formData();
+  default: async ({ request, params }) => {
+    const data = await request.formData();
 
-		try {
-			await updateTodoById(params.id, data);
+    try {
+      await updateTodoById(params.id, data);
 
-			// Make it look like it's thinking
-			await new Promise((resolve) => {
-				setTimeout(resolve, 800);
-			});
+      // Make it look like it's thinking
+      await new Promise((resolve) => {
+        setTimeout(resolve, 800);
+      });
 
-			return { success: true };
-		} catch (e) {
-			return fail(400, { error: true, message: 'Something failed during update' });
-		}
-	}
+      return { success: true };
+    } catch (e) {
+      return fail(400, { error: true, message: 'Something failed during update' });
+    }
+  }
 };
